@@ -3,6 +3,7 @@
 @import "compass/reset";
 @import "compass/css3";
 @import "constants";
+@import "fonts";
 
 body {
   width: 100%;
@@ -12,7 +13,7 @@ body {
 
 .wrapper {
   width: 900px;
-  margin: 5em auto;
+  margin: 0 auto;
   // position: absolute;
   // top: 50%;
   // left: 50%;
@@ -22,15 +23,22 @@ body {
   .playground, form {
     @include inline-block(top);
   }
-  form {
+}
+form {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: $base*10;
+  margin-left: -4px;
+  height: 100%;
+  button {
+    background-color: $color-red;
     width: $base*10;
-    margin-left: -4px;
-    height: 100%;
-    button {
-      background-color: $color-red;
-      width: $base*10;
-      height: $base*10;
-      border: none;
+    height: $base*10;
+    border: none;
+    .icon-spinner {
+      color: $color-white;
+      font-size: 2.5em;
     }
   }
 }
