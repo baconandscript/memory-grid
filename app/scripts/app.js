@@ -9,7 +9,7 @@ define([], function () {
     var colorArray = [];
     var colors     = ['fafafa', 'fcfcfc', 'f7f7f7', 'e0e0e0'];
 
-    // Populate array with number of cubes.
+    // Fill array with number of cubes.
     for(i = 0; i <= totalCubes; i++) {
       cubeArray.push(i);
     }
@@ -40,12 +40,15 @@ define([], function () {
 
     for(var i = 0; i <= totalCubes; i++) {
       cube.eq(cubeArray[i]).delay(i * 50).queue(function(){
-        $(this).addClass('flipped');
-        var distance = 0;
-        var flippedCubes = $('.flipped').length;
-        var loadingbarW = $('.loading').width();
-        distance += (flippedCubes * 15);
-        $('.loading-bar').css({'width': + distance + 'px'});
+        var flipClasses = ['flipY', 'flipX'];
+        var random = Math.round(Math.random() * (1 - 0));
+        flipClasses = shuffle(flipClasses);
+        $(this).addClass('flipped ' + flipClasses[random]);
       });
     }
+    $('.cube').on('click', function(){
+      var that       = $(this);
+      var activeTile = that.find('.back');
+      activeTile.toggleClass('active');
+    });
 });
